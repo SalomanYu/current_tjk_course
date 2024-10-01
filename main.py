@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from datetime import datetime
-from corrency import get_actual_currency, get_last_rate, save_result
+from corrency import get_actual_currency, get_last_rate, save_result, tz
 
 chats = (
     544490770, # Rosya
@@ -29,7 +29,7 @@ async def scheduled_message():
     rub_1k = current_rate.RUB_TO_TJK * 1_000
     rub_280k = current_rate.RUB_TO_TJK * 280_000
     msg = "\n".join([
-        f"Актуальный курс на {datetime.now()}:",
+        f"Актуальный курс на {datetime.now(tz)}:",
         f"1000 рублей = {rub_1k} сомони",
         f"280К рублей = {rub_280k} сомони",
     ])
